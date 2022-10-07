@@ -1,5 +1,8 @@
-import { ArrowDownward } from "@mui/icons-material";
-import { Button, Grid, IconButton, Typography } from "@mui/material";
+import ArrowDownward from "@mui/icons-material/ArrowDownward";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
@@ -7,8 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import { homeStyles } from "../styles";
 import { Loading, Meal } from "../components";
-import { useHeight, useIsLoggedIn, useMeals, useSLidesToShow } from "../hooks";
-import { useSelector } from "react-redux";
+import { useHeight, useMeals, useSLidesToShow } from "../hooks";
 
 let Header = () => {
   let { t } = useTranslation();

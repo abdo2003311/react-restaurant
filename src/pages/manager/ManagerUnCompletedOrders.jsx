@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Loading, ManagerOrder } from "../../components";

@@ -1,4 +1,5 @@
-import { Box, Grid, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import React from "react";
 import { Loading } from "../components";
 import Order from "../components/orders/Order";

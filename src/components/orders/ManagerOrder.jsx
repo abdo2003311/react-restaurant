@@ -1,17 +1,14 @@
-import {
-  Button,
-  FormControl,
-  Grid,
-  InputLabel,
-  Select,
-  Typography,
-  MenuItem,
-  ListItem,
-  ListItemIcon,
-  Divider,
-  ListItemText,
-  List,
-} from "@mui/material";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItem from "@mui/material/ListItem";
+import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
 import React, { useState } from "react";
 import OrderMeal from "./OrderMeal";
 import LocationOnIcon from "@mui/icons-material/LocationOn";

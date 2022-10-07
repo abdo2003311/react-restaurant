@@ -4,27 +4,22 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import {
-  Avatar,
-  Divider,
-  Icon,
-  Link,
-  ListItemIcon,
-  Menu,
-  MenuItem,
-  Tooltip,
-} from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Divider from "@mui/material/Divider";
+import Icon from "@mui/material/Icon";
+import Link from "@mui/material/Link";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Tooltip from "@mui/material/Tooltip";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toggleLeftToRight } from "../../store/features/leftToRight/leftToRight";
-import {
-  Logout,
-  More,
-  MoreVert,
-  PersonAdd,
-  Settings,
-} from "@mui/icons-material";
-
+import Logout from "@mui/icons-material/Logout";
+import PersonAdd from "@mui/icons-material/PersonAdd";
+import Settings from "@mui/icons-material/Settings";
+import MoreVert from "@mui/icons-material/MoreVert";
+import More from "@mui/icons-material/More";
 const lngs = {
   en: { nativeName: "English" },
   ar: { nativeName: "Arabic" },
@@ -141,12 +136,7 @@ export default function NavigationBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1 }}
-          >
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             TastyFood
           </Typography>
           <AccountMenu />

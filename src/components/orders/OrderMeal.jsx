@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import { Loading } from "..";
 import { useTranslation } from "react-i18next";
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 let OrderMeal = ({ meal: { quantity, _id } }) => {
   let { t } = useTranslation();

@@ -1,12 +1,10 @@
-import {
-  Divider,
-  Grid,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import Typography from "@mui/material/Typography";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItem from "@mui/material/ListItem";
+import Grid from "@mui/material/Grid";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
 import React, { useState } from "react";
 import OrderMeal from "./OrderMeal";
 import LocationOnIcon from "@mui/icons-material/LocationOn";

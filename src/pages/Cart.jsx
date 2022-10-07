@@ -15,7 +15,7 @@ import { CartMeal, Loading } from "../components";
 import { useUpdateCart, useUserCart } from "../hooks";
 import swal from "sweetalert";
 import { useTranslation } from "react-i18next";
-import { ArrowLeft } from "@mui/icons-material";
+import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import { cartsStyles } from "../styles";
 import { useFormik } from "formik";
 import * as Yup from "yup";

@@ -1,13 +1,14 @@
-import { Facebook, Instagram, Twitter, WhatsApp } from "@mui/icons-material";
-import {
-  Box,
-  Grid,
-  Link,
-  List,
-  ListItem,
-  ListItemIcon,
-  Typography,
-} from "@mui/material";
+import Facebook from "@mui/icons-material/Facebook";
+import Instagram from "@mui/icons-material/Instagram";
+import Twitter from "@mui/icons-material/Twitter";
+import WhatsApp from "@mui/icons-material/WhatsApp";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Typography from "@mui/material/Typography";
 import { useTranslation } from "react-i18next";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";

@@ -1,12 +1,11 @@
 import * as React from "react";
 import NavigationBar from "./components/common/NavigationBar";
-import Loading from "./components/common/Loading";
+import Box from "@mui/material/Box";
 import {
-  Box,
   createTheme,
   experimental_sx as sx,
   ThemeProvider,
-} from "@mui/material";
+} from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setLeftToRight } from "./store/features/leftToRight/leftToRight";

@@ -6,7 +6,7 @@ const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.js",
-  mode: "development",
+  mode: "production",
   module: {
     rules: [
       {
@@ -35,6 +35,17 @@ module.exports = {
       components: path.resolve(__dirname, "./src/components"),
     },
   },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all",
+        },
+      },
+    },
+  },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist",
@@ -49,6 +60,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new CompressionPlugin(),
+    new BundleAnalyzerPlugin(),
     new Dotenv(),
   ],
 };

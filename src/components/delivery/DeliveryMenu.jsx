@@ -1,11 +1,14 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
-import { Divider, Menu, MenuItem, Tooltip } from "@mui/material";
+import Divider from "@mui/material/Divider";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Tooltip from "@mui/material/Tooltip";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toggleLeftToRight } from "../../store/features/leftToRight/leftToRight";
-import { MoreVert } from "@mui/icons-material";
+import MoreVert from "@mui/icons-material/MoreVert";
 
 const lngs = {
   en: { nativeName: "English" },
