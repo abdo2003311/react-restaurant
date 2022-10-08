@@ -6,7 +6,7 @@ const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.js",
-  mode: "production",
+  mode: "development",
   module: {
     rules: [
       {
@@ -60,7 +60,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new CompressionPlugin(),
-    new BundleAnalyzerPlugin(),
     new Dotenv(),
   ],
 };

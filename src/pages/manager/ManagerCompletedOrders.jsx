@@ -8,7 +8,7 @@ import { setOrders } from "../../store/features/orders/ordersSlice";
 let ManagerCompletedOrders = ({ socket }) => {
   let { orders, loading } = useCompletedOrders();
   let dispatch = useDispatch();
-  socket.on("madeOrder", (data) => {
+  socket.on("completedOrder", (data) => {
     dispatch(setOrders({ orders: [...orders, data] }));
   }); 
   if (loading) return <Loading width="100" height="100" />;

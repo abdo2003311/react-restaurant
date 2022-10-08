@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { addToCart } from "../../api";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -8,17 +8,22 @@ let AddToCart = ({ meal }) => {
   let { t } = useTranslation();
   let isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   let handleAddToCart = async () => {
-    swal({
+    Swal.fire({
       title: t("addToCart.addToCart"),
-      content: "input",
+      input: "number",
+      text: "quantity",
       buttons: true,
       dangerMode: true,
     }).then(async (num) => {
       try {
-        let data = await addToCart({ _id: meal._id, quantity: num });
-        swal(t("addToCart.added"), meal.title, "success");
+        let data = await addToCart({ _id: meal._id, quantity: num.value });
+        Swal.fire({
+          title: t("addToCart.added"),
+          text: meal.title,
+          icon: "success",
+        });
       } catch (e) {
-        swal(t("addToCart.failed"), meal.title, "error");
+        Swal.fire({ title: t("addToCart.failed"), text: meal.title, icon: "error" });
       }
     });
   };

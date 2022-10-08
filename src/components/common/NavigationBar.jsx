@@ -4,22 +4,14 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
-import Icon from "@mui/material/Icon";
-import Link from "@mui/material/Link";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { toggleLeftToRight } from "../../store/features/leftToRight/leftToRight";
-import Logout from "@mui/icons-material/Logout";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
 import MoreVert from "@mui/icons-material/MoreVert";
-import More from "@mui/icons-material/More";
 const lngs = {
   en: { nativeName: "English" },
   ar: { nativeName: "Arabic" },
@@ -27,7 +19,7 @@ const lngs = {
 
 function AccountMenu() {
   let dispatch = useDispatch();
-  let { i18n } = useTranslation();
+  let { i18n, t } = useTranslation();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -89,27 +81,34 @@ function AccountMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem component="a" href="/">
-          Home
+          {t("header.home")}
         </MenuItem>
         <MenuItem component="a" href="/menu">
-          Menu
+          {t("header.menu")}
         </MenuItem>
         <MenuItem component="a" href="/cart">
-          Cart
+          {t("header.cart")}
         </MenuItem>
         <MenuItem component="a" href="/orders">
-          Orders
+          {t("header.orders")}
         </MenuItem>
         <MenuItem component="a" href="/signIn">
-          Sign-In
+          {t("header.signIn")}
         </MenuItem>
         <MenuItem component="a" href="/signUp">
-          Sign-Up
+          {t("header.signUp")}
         </MenuItem>
         <MenuItem component="a" href="/account">
-          Account
+          {t("header.account")}
         </MenuItem>
-        <MenuItem>Logout</MenuItem>
+        <MenuItem
+          onClick={() => {
+            localStorage.removeItem("token");
+            location.href = "/signIn";
+          }}
+        >
+          {t("header.logout")}
+        </MenuItem>
         <Divider />
         {Object.keys(lngs).map((lng) => (
           <MenuItem
@@ -132,12 +131,13 @@ function AccountMenu() {
 }
 
 export default function NavigationBar() {
+  let { t } = useTranslation()
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            TastyFood
+            {t("header.logo")}
           </Typography>
           <AccountMenu />
         </Toolbar>

@@ -2,6 +2,7 @@ import Grid from "@mui/material/Grid";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Loading, ManagerOrder } from "../../components";
+import Notification from "../../functions/notification";
 import { useDeliveryEmployees, useUnCompletedOrders } from "../../hooks";
 import {
   removeOrder,
@@ -16,7 +17,11 @@ let ManagerUnCompletedOrders = ({ socket }) => {
     dispatch(setOrders({ orders: [...orders, data] }));
   });
   socket.on("completedOrder", (data) => {
-    console.log(data)
+    Notification.fire({
+      title: "order completed",
+      text: `employee ${data._id}`,
+      icon: "success",
+    });
     dispatch(removeOrder({ order: data }));
   });
   if (loading) return <Loading width="100" height="100" />;

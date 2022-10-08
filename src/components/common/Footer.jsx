@@ -16,7 +16,7 @@ import React from "react";
 import ImageGallery from "react-image-gallery";
 
 let Footer = () => {
-  let { i18n } = useTranslation();
+  let { t, i18n } = useTranslation();
   let Arrow = () =>
     i18n.language === "ar" ? <ArrowBackIosIcon /> : <ArrowForwardIosIcon />;
   const images = [
@@ -56,8 +56,8 @@ let Footer = () => {
         ".social": {
           ".MuiSvgIcon-root": {
             padding: ".5vw",
-            width: "20px",
-            height: "20px",
+            width: "35px",
+            height: "35px",
             background: "#222",
           },
         },
@@ -73,7 +73,7 @@ let Footer = () => {
       <Grid container sx={{ padding: "3vw 3vw 0vw 3vw" }}>
         <Grid item xs={12} md={3}>
           <Typography component="h5" variant="h5">
-            About Restaurant
+            {t("footer.about")}
           </Typography>
           <Box
             sx={{
@@ -84,9 +84,7 @@ let Footer = () => {
             }}
           ></Box>
           <Typography component="p" variant="p" className="content">
-            Tempor Lorem cillum reprehenderit non occaecat voluptate. Ullamco
-            sunt ad mollit aute ut eiusmod ut reprehenderit ullamco tempor magna
-            ut cillum.
+            {t("footer.loremIpsum")}
           </Typography>
           <Box
             sx={({ breakpoints }) => ({
@@ -107,7 +105,7 @@ let Footer = () => {
         </Grid>
         <Grid item xs={12} md={2} className="navigate">
           <Typography component="h5" variant="h5">
-            Navigation
+            {t("footer.navigation")}
           </Typography>
           <Box
             sx={{
@@ -138,25 +136,25 @@ let Footer = () => {
                 <ListItemIcon>
                   <Arrow />
                 </ListItemIcon>
-                <Link href="/">Home</Link>
+                <Link href="/"> {t("footer.home")}</Link>
               </ListItem>
               <ListItem>
                 <ListItemIcon>
                   <Arrow />
                 </ListItemIcon>
-                <Link href="/menu">Menu</Link>
+                <Link href="/menu">{t("footer.menu")}</Link>
               </ListItem>
               <ListItem>
                 <ListItemIcon>
                   <Arrow />
                 </ListItemIcon>
-                <Link href="/signUp">Sign-Up</Link>
+                <Link href="/signUp">{t("footer.signUp")}</Link>
               </ListItem>
               <ListItem>
                 <ListItemIcon>
                   <Arrow />
                 </ListItemIcon>
-                <Link href="/signIn">Sign-In</Link>
+                <Link href="/signIn">{t("footer.signIn")}</Link>
               </ListItem>
             </List>
           </Box>
@@ -175,7 +173,7 @@ let Footer = () => {
           }}
         >
           <Typography component="h5" variant="h5">
-            Recent Meals
+            {t("footer.recentMeals")}
           </Typography>
           <Box
             sx={{
@@ -195,9 +193,9 @@ let Footer = () => {
               </Grid>
               <Grid item xs={8}>
                 <Typography component="p" variant="p">
-                  Quis ea aute proident dolor laboris
+                  {t("footer.smallLorem")}
                 </Typography>
-                <Typography component="span"> January 18, 2020</Typography>
+                <Typography component="span"> {t("footer.date")}</Typography>
               </Grid>
             </Grid>
             <Grid container>
@@ -209,16 +207,16 @@ let Footer = () => {
               </Grid>
               <Grid item xs={8}>
                 <Typography component="p" variant="p">
-                  Quis ea aute proident dolor laboris
+                  {t("footer.smallLorem")}{" "}
                 </Typography>
-                <Typography component="span"> January 18, 2020</Typography>
+                <Typography component="span"> {t("footer.date")} </Typography>
               </Grid>
             </Grid>
           </Grid>
         </Grid>{" "}
         <Grid item xs={12} md={3}>
           <Typography component="h5" variant="h5">
-            Photo Gallery
+            {t("footer.photoGallery")}{" "}
           </Typography>
           <Box
             sx={{
@@ -247,8 +245,8 @@ let Footer = () => {
           padding: "2vw 4vw !important",
         }}
       >
-        <p>©All Copyrights are reserved to Restaurant.com 2022</p>
-        <p>By Abdulrhman Babelly</p>
+        <p> {t("footer.copyright")} </p>
+        <p>{t("footer.by")}</p>
       </Grid>
     </Box>
   );

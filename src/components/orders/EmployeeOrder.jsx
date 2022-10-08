@@ -1,6 +1,3 @@
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import ListItemText from "@mui/material/ListItemText";
@@ -14,7 +11,7 @@ import OrderMeal from "./OrderMeal";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
 import PendingIcon from "@mui/icons-material/Pending";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { removeOrder } from "../../store/features/orders/ordersSlice";
 
@@ -26,8 +23,8 @@ let EmployeeOrder = ({ order, socket }) => {
       token: localStorage.getItem("deliveryToken"),
       order: order,
     });
+    Swal.fire({ title: "completed order", icon: "success" });
     dispatch(removeOrder({ order: order }));
-    swal("completed order", " ", "success");
   };
   return (
     <Grid

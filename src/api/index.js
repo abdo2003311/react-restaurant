@@ -12,7 +12,8 @@ export {
   managerLogin,
   getCompletedOrders,
   getUnCompletedOrders,
-  getDeliveryEmpolyees
+  getDeliveryEmpolyees,
+  acceptOrder
 } from "./manager";
 export {
   deliveryLogin,

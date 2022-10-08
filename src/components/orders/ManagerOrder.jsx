@@ -1,6 +1,7 @@
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import ListItemText from "@mui/material/ListItemText";
@@ -14,13 +15,16 @@ import OrderMeal from "./OrderMeal";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SpeakerNotesIcon from "@mui/icons-material/SpeakerNotes";
 import PendingIcon from "@mui/icons-material/Pending";
-import swal from "sweetalert";
 import { useDispatch } from "react-redux";
-import { removeOrder } from "../../store/features/orders/ordersSlice";
+import {
+  removeOrder,
+  updateOrder,
+} from "../../store/features/orders/ordersSlice";
+import Notification from "../../functions/notification";
 
 let ManagerOrder = ({ order, socket, deliveryEmployees }) => {
   let { meals, notes, location, status } = order;
-  let [deliveryEmployee, setDeliveryEmployee] = useState([]);
+  let [deliveryEmployee, setDeliveryEmployee] = useState("");
   let dispatch = useDispatch();
 
   const handleDeliveryEmployeesChange = (event) => {
@@ -30,10 +34,43 @@ let ManagerOrder = ({ order, socket, deliveryEmployees }) => {
     dispatch(removeOrder({ order: data }));
   });
 
+  socket.on("acceptedOrder", (data) => {
+    if (!data.error) {
+      Notification.fire({
+        title: "accepted order",
+        text: `delivery employee ${data.employee.username}`,
+        icon: "success",
+      });
+      dispatch(updateOrder({ order: data.order }));
+      return;
+    }
+    Notification.fire({
+      title: "failed to accept order",
+      text: data.error,
+      icon: "error",
+    });
+  });
+
   let handleAccept = async () => {
     let employee = deliveryEmployees.filter(
       (e) => e.username === deliveryEmployee
     );
+    if (deliveryEmployee === "") {
+      Notification.fire({
+        title: "failed to accept order",
+        text: "please choose delivery employee",
+        icon: "error",
+      });
+      return;
+    }
+    if (order.status === "accepted") {
+      Notification.fire({
+        title: "failed to accept order",
+        text: "already accepted",
+        icon: "error",
+      });
+      return;
+    }
     socket.emit("acceptOrder", {
       token: localStorage.getItem("managerToken"),
       order: order,
@@ -125,6 +162,7 @@ let ManagerOrder = ({ order, socket, deliveryEmployees }) => {
                     fullWidth
                     variant="filled"
                     defaultValue={""}
+                    required
                   >
                     {deliveryEmployees?.map((deliveryEmployee, i) => (
                       <MenuItem key={i} value={deliveryEmployee.username}>

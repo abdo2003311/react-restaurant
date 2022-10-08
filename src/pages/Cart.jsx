@@ -13,7 +13,7 @@ import FormGroup from "@mui/material/FormGroup";
 import Typography from "@mui/material/Typography";
 import { CartMeal, Loading } from "../components";
 import { useUpdateCart, useUserCart } from "../hooks";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 import ArrowLeft from "@mui/icons-material/ArrowLeft";
 import { cartsStyles } from "../styles";
@@ -21,7 +21,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { makeOrder } from "../api";
 let Cart = ({ socket }) => {
-
   let { cart, loading } = useUserCart();
   let { meals, price } = cart;
   let { updateCart } = useUpdateCart();
@@ -40,10 +39,10 @@ let Cart = ({ socket }) => {
         let data = await makeOrder({ notes, location });
         if (data.status === 200) {
           socket.emit("makeOrder", data);
-          swal(t("cart.madeOrder"), "", "success");
+          Swal.fire({ title: t("cart.madeOrder"), icon: "success" });
         }
       } catch (e) {
-        swal(t("cart.failedToMakeOrder"), "", "error");
+        Swal.fire({ title: t("cart.failedToMakeOrder"), icon: "error" });
       }
     },
   });
@@ -59,20 +58,20 @@ let Cart = ({ socket }) => {
     })
       .then((data) => {
         if (!data.errors)
-          swal(
+          Swal(
             t("cart.updatedCart"),
             `${t("cart.cartNumber")} ${id}`,
             "success"
           );
         else
-          swal(
+          Swal(
             t("cart.failedToUpdateCart"),
             `${t("cart.cartNumber")} ${id}`,
             "error"
           );
       })
       .catch((err) => {
-        swal(
+        Swal(
           t("cart.failedToUpdateCart"),
           `${t("cart.cartNumber")} ${id}`,
           "error"

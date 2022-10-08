@@ -3,12 +3,13 @@
   "search": "search...",
   "signIn": "Sign-in",
   "signUp": "Sign-up",
-  "settings": "Settings",
-  "store": "Store",
+  "account": "Account",
+  "orders": "Orders",
   "cart": "Cart",
+  "home": "Home",
   "logout": "Logout",
   "darkmode": "Dark mode",
-  "h4" : "Welcome To Our Restaurant",
-  "h1" : "We Got All Kinds Of Delicious Meals!",
-  "menu" : "menu"
+  "h4": "Welcome To Our Restaurant",
+  "h1": "We Got All Kinds Of Delicious Meals!",
+  "menu": "menu"
 }

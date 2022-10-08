@@ -84,11 +84,14 @@ let App = ({ socket }) => {
         }}
       >
         {location.pathname.indexOf("manager") === -1 &&
-          location.pathname.indexOf("delivery") === -1 &&
-          navigationBar}
+          location.pathname.indexOf("delivery") === -1 && (
+            <>
+              {navigationBar}
+              <ClientRouter socket={socket} />
+            </>
+          )}
         {location.pathname.indexOf("manager") > -1 && managerNavigation}
         {location.pathname.indexOf("delivery") > -1 && deliveryNavigation}
-        <ClientRouter socket={socket} />
         {location.pathname.indexOf("manager") === -1 &&
           location.pathname.indexOf("delivery") === -1 &&
           footer}
