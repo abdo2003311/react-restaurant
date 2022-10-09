@@ -12,7 +12,6 @@ import {
   deleteItem,
   itemMount,
 } from "../../store/features/carts/cartsSilce";
-import swal from "sweetalert";
 import { useTranslation } from "react-i18next";
 
 let CartMeal = (props) => {
@@ -51,7 +50,6 @@ let CartMeal = (props) => {
         price: Number(meal.price).toFixed(0) * Number(count),
       })
     );
-    swal(t("cart.deletedMeal"), meal.title, "success");
   };
 
   if (loading) return <Loading width={100} height={10} />;

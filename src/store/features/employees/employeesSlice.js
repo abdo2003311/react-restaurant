@@ -6,8 +6,17 @@ export const employeesSlice = createSlice({
     deliveryEmployees: [],
   },
   reducers: {
-    setEmployees: (state, { payload: {employees} }) => {
+    setEmployees: (state, { payload: { employees } }) => {
       state.deliveryEmployees = employees;
+    },
+    deleteStorageEmployee: (state, { payload: { order } }) => {
+      state.deliveryEmployees.splice(order, 1);
+    },
+    updateStorageEmployee: (state, { payload: { order, employee } }) => {
+      state.deliveryEmployees[order] = employee;
+    },
+    createStorageEmployee: (state, { payload: { employee } }) => {
+      state.deliveryEmployees.push(employee);
     },
     completedOrder: (state, { payload: { employee } }) => {
       for (let i = 0; i < state.deliveryEmployees.length; i++) {
@@ -21,6 +30,12 @@ export const employeesSlice = createSlice({
   },
 });
 
-export const { completedOrder, setEmployees } = employeesSlice.actions;
+export const {
+  completedOrder,
+  createStorageEmployee,
+  updateStorageEmployee,
+  deleteStorageEmployee,
+  setEmployees,
+} = employeesSlice.actions;
 
 export default employeesSlice;

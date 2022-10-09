@@ -10,8 +10,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setLeftToRight } from "./store/features/leftToRight/leftToRight";
 import { useTranslation } from "react-i18next";
-import { ClientRouter, DeliveryRouter, ManagerRouter } from "./routers";
-import { DeliveryNavigation, Footer, ManagerNavigation } from "./components";
+import {
+  AdminRouter,
+  ClientRouter,
+  DeliveryRouter,
+  ManagerRouter,
+} from "./routers";
+import {
+  AdminNavigation,
+  DeliveryNavigation,
+  Footer,
+  ManagerNavigation,
+} from "./components";
 import { rtlTextFiled } from "./styles";
 import { socketConnect } from "socket.io-react";
 
@@ -74,6 +84,9 @@ let App = ({ socket }) => {
   let deliveryNavigation = React.useMemo(() => (
     <DeliveryNavigation routes={<DeliveryRouter socket={socket} />} />
   ));
+  let adminNavigation = React.useMemo(() => (
+    <AdminNavigation routes={<AdminRouter />} />
+  ));
   let footer = React.useMemo(() => <Footer />);
   return (
     <ThemeProvider theme={theme}>
@@ -84,16 +97,19 @@ let App = ({ socket }) => {
         }}
       >
         {location.pathname.indexOf("manager") === -1 &&
-          location.pathname.indexOf("delivery") === -1 && (
+          location.pathname.indexOf("delivery") === -1 &&
+          location.pathname.indexOf("admin") === -1 && (
             <>
               {navigationBar}
               <ClientRouter socket={socket} />
             </>
           )}
         {location.pathname.indexOf("manager") > -1 && managerNavigation}
+        {location.pathname.indexOf("admin") > -1 && adminNavigation}
         {location.pathname.indexOf("delivery") > -1 && deliveryNavigation}
         {location.pathname.indexOf("manager") === -1 &&
           location.pathname.indexOf("delivery") === -1 &&
+          location.pathname.indexOf("admin") === -1 &&
           footer}
       </Box>
     </ThemeProvider>

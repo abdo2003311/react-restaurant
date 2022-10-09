@@ -8,7 +8,7 @@ import { completedOrder } from "../../store/features/employees/employeesSlice";
 let ManagerEmpolyees = ({ socket }) => {
   let { deliveryEmployees, loading } = useDeliveryEmployees();
   let dispatch = useDispatch();
-  socket.on("completedOrder", ({ employee }) => {
+  socket.on("updateEmployee", (employee) => {
     dispatch(completedOrder({ employee: employee }));
   });
   if (loading) return <Loading width="100" height="100" />;

@@ -54,7 +54,7 @@ let EmployeeOrder = ({ order, socket }) => {
         },
       }}
     >
-      <Grid item xs={6}>
+      <Grid item xs={12} md={6}>
         <Typography variant="h5" fontWeight="900" pl={1}>
           MEALS
         </Typography>
@@ -62,7 +62,7 @@ let EmployeeOrder = ({ order, socket }) => {
           <OrderMeal meal={meal} key={i} />
         ))}
       </Grid>
-      <Grid item xs={6} textTransform="capitalize">
+      <Grid item xs={12} md={6} textTransform="capitalize">
         <Typography variant="h5" fontWeight="900" pl={1}>
           INFO
         </Typography>

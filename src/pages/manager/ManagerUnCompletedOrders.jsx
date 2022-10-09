@@ -17,12 +17,20 @@ let ManagerUnCompletedOrders = ({ socket }) => {
     dispatch(setOrders({ orders: [...orders, data] }));
   });
   socket.on("completedOrder", (data) => {
+    if (!data.error) {
+      Notification.fire({
+        title: "order completed",
+        text: `employee ${data._id}`,
+        icon: "success",
+      });
+      dispatch(removeOrder({ order: data }));
+      return;
+    }
     Notification.fire({
-      title: "order completed",
-      text: `employee ${data._id}`,
-      icon: "success",
+      title: "failed to complete order",
+      text: data.error,
+      icon: "error",
     });
-    dispatch(removeOrder({ order: data }));
   });
   if (loading) return <Loading width="100" height="100" />;
   if (employees.loading) return <Loading width="100" height="100" />;

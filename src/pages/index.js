@@ -12,3 +12,8 @@ export { default as DeliveryCompletedOrders } from "./delivery/DeliveryCompleted
 export { default as DeliveryLogin } from "./delivery/DeliveryLogin";
 export { default as Menu } from "./Menu";
 export { default as Orders } from "./Orders";
+export { default as AdminLogin } from "./admin/AdminLogin";
+export { default as AdminMeals } from "./admin/AdminMeals";
+export { default as AdminEmployees } from "./admin/AdminEmployees";
+export { default as AdminOrders } from "./admin/AdminOrders";
+export { default as AdminUsers } from "./admin/AdminOrders";

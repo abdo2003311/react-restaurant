@@ -13,10 +13,24 @@ export {
   getCompletedOrders,
   getUnCompletedOrders,
   getDeliveryEmpolyees,
-  acceptOrder
+  acceptOrder,
 } from "./manager";
 export {
   deliveryLogin,
   getEmployeeCompletedOrders,
   getEmployeeUnCompletedOrders,
 } from "./delivery";
+
+export {
+  adminLogin,
+  getAdminOrders,
+  getAdminEmployees,
+  getAdminUsers,
+  getAdminMeals,
+  deleteMeal,
+  createMeal,
+  updateMeal,
+  updateEmpolyee,
+  createEmployee,
+  deleteEmployee,
+} from "./admin";
