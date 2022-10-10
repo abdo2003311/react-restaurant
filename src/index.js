@@ -10,7 +10,7 @@ import store from "./store";
 import { SocketProvider } from "socket.io-react";
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:8080");
+const socket = io.connect(process.env.REACT_APP_SERVER_URL);
 socket.on("message", (msg) => console.log(msg));
 const root = createRoot(document.getElementById("root"));
 root.render(
