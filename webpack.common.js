@@ -6,14 +6,12 @@ const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   entry: "./src/index.js",
-  mode: "production",
   module: {
     rules: [
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
-      }
-      ,
+      },
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
@@ -21,19 +19,6 @@ module.exports = {
         options: { presets: ["@babel/env"] },
       },
     ],
-  },
-  resolve: {
-    extensions: ["*", ".js", ".jsx"],
-    alias: {
-      assets: path.resolve(__dirname, "./src/assets"),
-      examples: path.resolve(__dirname, "./src/examples"),
-      hooks: path.resolve(__dirname, "./src/hooks"),
-      api: path.resolve(__dirname, "./src/api"),
-      pages: path.resolve(__dirname, "./src/pages"),
-      context: path.resolve(__dirname, "./src/context"),
-      translations: path.resolve(__dirname, "./src/translations"),
-      components: path.resolve(__dirname, "./src/components"),
-    },
   },
   optimization: {
     splitChunks: {
@@ -46,20 +31,20 @@ module.exports = {
       },
     },
   },
+  resolve: { extensions: ["*", ".js", ".jsx"] },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist",
     filename: "[name].bundle.js",
     chunkFilename: "[name].bundle.js",
   },
-  devServer: {
-    static: path.join(__dirname, "public/"),
-    port: 3000,
-    historyApiFallback: true,
-  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new CompressionPlugin(),
+    new CompressionPlugin({
+      threshold: 1024,
+      minRatio: 0.8,
+    }),
     new Dotenv(),
+
   ],
 };
